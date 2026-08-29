@@ -1,0 +1,82 @@
+:ClrHome
+:{7,15}→dim([A])
+:{7,15}→dim([B])
+:Fill(0,[A])
+:Fill(0,[B])
+:0→M
+:While M<15
+:randInt(1,7)→R
+:randInt(1,15)→C
+:If [A](R,C)=0
+:Then
+:9→[A](R,C)
+:M+1→M
+:End
+:End
+:For(I,1,7)
+:For(J,1,15)
+:Output(I,J,"■")
+:End
+:End
+:4→X
+:8→Y
+:1→G
+:While G=1
+:Output(Y,X,"O")
+:0→K
+:While K=0
+:getKey→K
+:End
+:If [B](Y,X)=0
+:Output(Y,X,"■")
+:If [B](Y,X)=2
+:Output(Y,X,"P")
+:If [B](Y,X)=1 and [A](Y,X)=0
+:Output(Y,X,".")
+:If [B](Y,X)=1 and [A](Y,X)>0
+:Output(Y,X,[A](Y,X))
+:If K=24 and X>1
+:X-1→X
+:If K=26 and X<15
+:X+1→X
+:If K=25 and Y>1
+:Y-1→Y
+:If K=34 and Y<7
+:Y+1→Y
+:If K=93 and [B](Y,X)≠1
+:Then
+:If [B](Y,X)=0
+:Then
+:2→[B](Y,X)
+:Else
+:0→[B](Y,X)
+:End
+:End
+:If K=105 and [B](Y,X)≠2
+:Then
+:If [A](Y,X)=9
+:Then
+:0→G
+:Disp "BOOM ! PERDU."
+:End
+:If [A](Y,X)=0
+:Then
+:1→[B](Y,X)
+:0→V
+:For(I,max(1,Y-1),min(7,Y+1))
+:For(J,max(1,X-1),min(15,X+1))
+:If [A](I,J)=9
+:V+1→V
+:End
+:End
+:V→[A](Y,X)
+:If V=0
+:Output(Y,X,".")
+:If V>0
+:Output(Y,X,V)
+:End
+:End
+:If K=45
+:0→G
+:End
+
