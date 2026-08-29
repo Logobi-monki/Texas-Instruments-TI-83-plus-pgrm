@@ -1,0 +1,68 @@
+:ClrHome
+:5→X:5→Y:1→D
+:"MMMMMMMMM"→Str1
+:"M       M"→Str2
+:"M M M M M"→Str3
+:"M       M"→Str4
+:"MMMMMMMMM"→Str5
+
+:Lbl G
+:ClrHome
+:X→A:Y→B
+:D→E
+
+:If D=1:Y-1→B
+:If D=2:X+1→A
+:If D=3:Y+1→B
+:If D=4:X-1→A
+
+:If B=1:sub(Str1,A,1)→W
+:If B=2:sub(Str2,A,1)→W
+:If B=3:sub(Str3,A,1)→W
+:If B=4:sub(Str4,A,1)→W
+:If B=5:sub(Str5,A,1)→W
+
+:If W="M"
+:Then
+:Output(1,4,"MMMMMMMM")
+:Output(2,4,"M      M")
+:Output(3,4,"M  MM  M")
+:Output(4,4,"M  MM  M")
+:Output(5,4,"M      M")
+:Output(6,4,"MMMMMMMM")
+:Output(8,1,"MUR DEVANT !")
+:Else
+:Output(3,2,"M")
+:Output(4,2,"M")
+:Output(5,2,"M")
+:Output(3,15,"M")
+:Output(4,15,"M")
+:Output(5,15,"M")
+:Output(2,4,"MMMMMMMM")
+:Output(6,4,"MMMMMMMM")
+:Output(8,1,"COULOIR LIBRE")
+:End
+
+:0→K
+:While K=0
+:GetKey→K
+:End
+
+:If K=24
+:Then
+:D-1→D
+:If D=0:4→D
+:End
+
+:If K=26
+:Then
+:D+1→D
+:If D=5:1→D
+:End
+
+:If K=25 and W≠"M"
+:Then
+:A→X:B→Y
+:End
+
+:Goto G
