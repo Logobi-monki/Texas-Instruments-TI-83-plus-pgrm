@@ -1,0 +1,268 @@
+:ClrHome
+:If dim([J])=0
+:Then
+:{10,6}→dim([J])
+:End
+:Lbl MAINMENU
+:ClrHome
+:Disp "ANAGEO2"
+:Disp "CIRCLE EQUATIONS"
+:Disp "& WORK JOURNAL"
+:Disp ""
+:Menu("SELECT:","ORIGIN(0,0)",A,"CENTER(H,K)",B,"JOURNAL",C,"EXIT",D)
+:Lbl A
+:Call lbl CIRCORG
+:Goto MAINMENU
+:Lbl B
+:Call lbl CIRCHK
+:Goto MAINMENU
+:Lbl C
+:Call lbl JOURNAL
+:Goto MAINMENU
+:Lbl D
+:ClrHome
+:Disp "GOODBYE"
+:Pause
+:End
+
+:Lbl CIRCORG
+:ClrHome
+:Disp "CENTER AT ORIGIN"
+:Disp "EQUATION FORM:"
+:Disp "X^2 + Y^2 = R^2"
+:Pause
+:ClrHome
+:Disp "ENTER POINT ON"
+:Disp "CIRCLE:"
+:Prompt X,Y
+:ClrHome
+:Disp "POINT: ("
+:Disp X
+:Disp ","
+:Disp Y
+:Disp ")"
+:Pause
+:ClrHome
+:Disp "SUBSTITUTION:"
+:Disp "("
+:Disp X
+:Disp ")^2 + ("
+:Disp Y
+:Disp ")^2 = R^2"
+:Pause
+:X^2→W
+:Y^2→R
+:W+R→R
+:ClrHome
+:Disp "CALCULATION:"
+:Disp "X^2 = "
+:Disp W
+:Pause
+:ClrHome
+:Disp "Y^2 = "
+:Disp R-W
+:Pause
+:ClrHome
+:Disp "SUM:"
+:Disp "R^2 = "
+:Disp R
+:Pause
+:ClrHome
+:Disp "FINAL EQUATION:"
+:Disp "X^2 + Y^2 = "
+:Disp R
+:Pause
+:1→I
+:If [J](10,1)≠0
+:Then
+:1→I
+:Else
+:det([J])+1→I
+:End
+:If I>10
+:Then
+:1→I
+:End
+:X→[J](I,2)
+:Y→[J](I,3)
+:R→[J](I,4)
+:0→[J](I,1)
+:Return
+
+:Lbl CIRCHK
+:ClrHome
+:Disp "CENTER AT (H,K)"
+:Disp "EQUATION FORM:"
+:Disp "(X-H)^2+(Y-K)^2"
+:Disp "= R^2"
+:Pause
+:ClrHome
+:Disp "ENTER CENTER"
+:Disp "(H,K):"
+:Prompt H,K
+:ClrHome
+:Disp "CENTER: ("
+:Disp H
+:Disp ","
+:Disp K
+:Disp ")"
+:Pause
+:ClrHome
+:Disp "ENTER POINT ON"
+:Disp "CIRCLE:"
+:Prompt X,Y
+:ClrHome
+:Disp "POINT: ("
+:Disp X
+:Disp ","
+:Disp Y
+:Disp ")"
+:Pause
+:ClrHome
+:Disp "SUBSTITUTION:"
+:Disp "("
+:Disp X
+:Disp "-"
+:Disp H
+:Disp ")^2 + ("
+:Disp Y
+:Disp "-"
+:Disp K
+:Disp ")^2 = R^2"
+:Pause
+:X-H→W
+:Y-K→A
+:W^2→W
+:A^2→A
+:W+A→R
+:ClrHome
+:Disp "DIFFERENCES:"
+:Disp "X - H = "
+:Disp X-H
+:Pause
+:ClrHome
+:Disp "Y - K = "
+:Disp Y-K
+:Pause
+:ClrHome
+:Disp "SQUARING:"
+:Disp "(X-H)^2 = "
+:Disp W
+:Pause
+:ClrHome
+:Disp "(Y-K)^2 = "
+:Disp A
+:Pause
+:ClrHome
+:Disp "SUM:"
+:Disp "R^2 = "
+:Disp R
+:Pause
+:ClrHome
+:Disp "EQUATION:"
+:Disp "(X-"
+:Disp H
+:Disp ")^2+(Y-"
+:Disp K
+:Disp ")^2="
+:Disp R
+:Pause
+:1→I
+:If [J](10,1)≠0
+:Then
+:1→I
+:Else
+:det([J])+1→I
+:End
+:If I>10
+:Then
+:1→I
+:End
+:1→[J](I,1)
+:H→[J](I,2)
+:K→[J](I,3)
+:X→[J](I,5)
+:Y→[J](I,6)
+:R→[J](I,4)
+:Return
+
+:Lbl JOURNAL
+:ClrHome
+:Disp "WORK JOURNAL"
+:Disp "SYSTEM"
+:Disp ""
+:Menu("SELECT:","VIEW LOG",V,"VERIFY",E,"BACK",Z)
+:Lbl V
+:Call lbl VIEWLOG
+:Goto JOURNAL
+:Lbl E
+:Call lbl VERIFY
+:Goto JOURNAL
+:Lbl Z
+:Return
+
+:Lbl VIEWLOG
+:ClrHome
+:Disp "LAST 10 CALC."
+:Pause
+:1→I
+:Lbl LOGLOOP
+:ClrHome
+:Disp "ENTRY "
+:Disp I
+:Disp ":"
+:If [J](I,1)=0
+:Then
+:Disp "ORIGIN TYPE"
+:Else
+:Disp "CENTER TYPE"
+:End
+:Pause
+:ClrHome
+:Disp "R^2 = "
+:Disp [J](I,4)
+:Pause
+:I+1→I
+:If I≤10
+:Then
+:Goto LOGLOOP
+:End
+:Return
+
+:Lbl VERIFY
+:ClrHome
+:Disp "VERIFY ANSWER"
+:Disp "ENTER SLOT# (1-10)"
+:Prompt I
+:If I<1 or I>10
+:Then
+:ClrHome
+:Disp "INVALID SLOT"
+:Pause
+:Return
+:End
+:ClrHome
+:Disp "SLOT "
+:Disp I
+:Pause
+:Disp "TRUE R^2 = "
+:Disp [J](I,4)
+:Pause
+:ClrHome
+:Disp "ENTER YOUR"
+:Disp "CALCULATED R^2:"
+:Prompt W
+:ClrHome
+:If W=[J](I,4)
+:Then
+:Disp "*** CORRECT! ***"
+:Pause
+:Else
+:Disp "WRONG"
+:Pause
+:ClrHome
+:Disp "TRUE VALUE:"
+:Disp [J](I,4)
+:Pause
+:End
+:Return
