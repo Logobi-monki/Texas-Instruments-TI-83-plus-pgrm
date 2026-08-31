@@ -1,5 +1,5 @@
 :ClrHome
-:Lbl ME
+:Lbl Z
 :ClrHome
 :Disp "GEOMETRIE","ANALYTIQUE"
 :Disp ""
@@ -18,24 +18,24 @@
 :(H-X)²+(K-Y)²→P
 :ClrHome
 :Disp "REPONSE FINALE:"
-:Disp "D = √(",P对外
+:Disp "D = √(",P
 :Disp √(P)
 :Pause 
-:Goto ME
+:Goto Z
 :
 :Lbl B
 :ClrHome
 :Disp "FORMULE PT MILIEU"
 :Pause 
 :Prompt X,Y,H,K
-:(X+H)/2→M
-:(Y+K)/2→P
+:(X+H)/2→U
+:(Y+K)/2→V
 :ClrHome
 :Disp "POINT MILIEU M:"
-:Disp "X =",M
-:Disp "Y =",P
+:Disp "X =",U
+:Disp "Y =",V
 :Pause 
-:Goto ME
+:Goto Z
 :
 :Lbl C
 :ClrHome
@@ -47,19 +47,19 @@
 :ClrHome
 :Disp "LIGNE VERTICALE","PENTE UNDEF","EQ: X =",X
 :Pause 
-:Goto ME
+:Goto Z
 :End
 :(K-Y)/(H-X)→M
 :Y-M*X→B
 :ClrHome
-:Disp "VALEURS:","M =",M Gold,"B =",B
+:Disp "VALEURS:","M =",M,"B =",B
 :Pause 
 :ClrHome
 :Disp "EQ FINALE:","Y = MX + B"
 :Disp "M =",M
 :Disp "B =",B
 :Pause 
-:Goto ME
+:Goto Z
 :
 :Lbl D
 :ClrHome
@@ -67,14 +67,14 @@
 :Pause 
 :Prompt A,D
 :Prompt X,Y,H,K
-:(X+A*(H-X)/D)→M
-:(Y+A*(K-Y)/D)→P
+:(X+A*(H-X)/D)→U
+:(Y+A*(K-Y)/D)→V
 :ClrHome
 :Disp "POINT DIVISION P:"
-:Disp "X =",M
-:Disp "Y =",P
+:Disp "X =",U
+:Disp "Y =",V
 :Pause 
-:Goto ME
+:Goto Z
 :
 :Lbl E
 :ClrHome
@@ -88,7 +88,7 @@
 :ClrHome
 :Disp "CAS VERTICAL","NON SUPPORTE"
 :Pause 
-:Goto ME
+:Goto Z
 :End
 :(D-B)/(C-A)→M
 :B-M*A→N
@@ -99,7 +99,7 @@
 :ClrHome
 :Disp "LIGNES PARALLELES"
 :Pause 
-:Goto ME
+:Goto Z
 :End
 :(P-N)/(M-O)→Q
 :M*Q+N→R
@@ -108,7 +108,7 @@
 :Disp "X =",Q
 :Disp "Y =",R
 :Pause 
-:Goto ME
+:Goto Z
 :
 :Lbl F
 :ClrHome
