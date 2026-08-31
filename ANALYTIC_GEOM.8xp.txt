@@ -1,10 +1,10 @@
 :ClrHome
 :Lbl MENU
 :ClrHome
-:Disp "ANALYTIC GEOMETRY"
-:Disp "QUEBEC SN SEC 4"
+:Disp "GÉOMÉTRIE ANALYTIQUE"
+:Disp "QUÉBEC SN SEC 4"
 :Disp ""
-:Menu("SELECT:","DISTANCE",A,"MIDPOINT",B,"LINE EQUATION",C,"DIVISION PT",D,"EXIT",E)
+:Menu("SÉLECTIONNER:","DISTANCE",A,"POINT MILIEU",B,"ÉQUATION LIGNE",C,"POINT DIVISION",D,"INTERSECTION",E,"QUITTER",F)
 :Lbl A
 :Call lbl DISTANCE
 :Goto MENU
@@ -18,16 +18,19 @@
 :Call lbl DIVPOINT
 :Goto MENU
 :Lbl E
+:Call lbl INTRSECT
+:Goto MENU
+:Lbl F
 :ClrHome
-:Disp "GOODBYE"
+:Disp "AU REVOIR"
 :Pause
 :End
 
 :Lbl DISTANCE
 :ClrHome
-:Disp "DISTANCE FORMULA"
+:Disp "FORMULE DISTANCE"
 :Pause
-:Disp "d = SQR((X2-X1)^2"
+:Disp "d = RÉC((X2-X1)^2"
 :Disp "    + (Y2-Y1)^2)"
 :Pause
 :Prompt X,Y,H,K
@@ -42,14 +45,14 @@
 :Disp K
 :Pause
 :ClrHome
-:Disp "CALC DIFFERENCES:"
+:Disp "CALC DIFFÉRENCES:"
 :Disp "X2 - X1 ="
 :Disp H-X
 :Disp "Y2 - Y1 ="
 :Disp K-Y
 :Pause
 :ClrHome
-:Disp "SQUARING:"
+:Disp "ÉLEVER AU CARRÉ:"
 :Disp "(DX)^2 ="
 :Disp (H-X)^2
 :Disp "(DY)^2 ="
@@ -57,12 +60,12 @@
 :Pause
 :(H-X)^2+(K-Y)^2→P
 :ClrHome
-:Disp "UNDER RADICAL:"
-:Disp "SUM = "
+:Disp "SOUS RADICAL:"
+:Disp "SOMME = "
 :Disp P
 :Pause
 :ClrHome
-:Disp "FINAL ANSWER:"
+:Disp "RÉPONSE FINALE:"
 :Disp "d = "
 :Disp √(P)
 :Pause
@@ -70,7 +73,7 @@
 
 :Lbl MIDPOINT
 :ClrHome
-:Disp "MIDPOINT FORMULA"
+:Disp "FORMULE POINT MILIEU"
 :Pause
 :Disp "M = ((X1+X2)/2,"
 :Disp "     (Y1+Y2)/2)"
@@ -87,21 +90,21 @@
 :Disp K
 :Pause
 :ClrHome
-:Disp "X-COORDINATE:"
+:Disp "COORDONNÉE X:"
 :Disp "X1 + X2 ="
 :Disp X+H
-:Disp "DIVIDED BY 2:"
+:Disp "DIVISÉ PAR 2:"
 :Disp (X+H)/2→M
 :Pause
 :ClrHome
-:Disp "Y-COORDINATE:"
+:Disp "COORDONNÉE Y:"
 :Disp "Y1 + Y2 ="
 :Disp Y+K
-:Disp "DIVIDED BY 2:"
+:Disp "DIVISÉ PAR 2:"
 :Disp (Y+K)/2→P
 :Pause
 :ClrHome
-:Disp "MIDPOINT M:"
+:Disp "POINT MILIEU M:"
 :Disp "("
 :Disp M
 :Disp ","
@@ -112,7 +115,7 @@
 
 :Lbl LINEQN
 :ClrHome
-:Disp "LINE EQUATION"
+:Disp "ÉQUATION LIGNE"
 :Pause
 :Disp "y = mx + b"
 :Pause
@@ -130,11 +133,11 @@
 :If H-X=0
 :Then
 :ClrHome
-:Disp "*** VERTICAL LINE ***"
+:Disp "*** LIGNE VERTICALE ***"
 :Pause
-:Disp "SLOPE: UNDEFINED"
+:Disp "PENTE: INDÉFINIE"
 :Pause
-:Disp "EQUATION:"
+:Disp "ÉQUATION:"
 :Disp "X = "
 :Disp X
 :Pause
@@ -142,7 +145,7 @@
 :End
 :(K-Y)/(H-X)→M
 :ClrHome
-:Disp "SLOPE m:"
+:Disp "PENTE m:"
 :Disp "m = (Y2-Y1)/(X2-X1)"
 :Pause
 :Disp "m = ("
@@ -152,13 +155,13 @@
 :Disp ")"
 :Pause
 :ClrHome
-:Disp "SLOPE VALUE:"
+:Disp "VALEUR PENTE:"
 :Disp "m = "
 :Disp M
 :Pause
 :Y-M*X→B
 :ClrHome
-:Disp "Y-INTERCEPT b:"
+:Disp "ORDONNÉE À L'ORIGINE b:"
 :Disp "b = Y1 - m*X1"
 :Pause
 :Disp "b = "
@@ -170,12 +173,12 @@
 :Disp ")"
 :Pause
 :ClrHome
-:Disp "b VALUE:"
+:Disp "VALEUR b:"
 :Disp "b = "
 :Disp B
 :Pause
 :ClrHome
-:Disp "FINAL EQUATION:"
+:Disp "ÉQUATION FINALE:"
 :Disp "y = "
 :Disp M
 :Disp "x + "
@@ -185,15 +188,15 @@
 
 :Lbl DIVPOINT
 :ClrHome
-:Disp "DIVISION POINT"
+:Disp "POINT DIVISION"
 :Pause
-:Disp "PART-TO-WHOLE RATIO"
+:Disp "RATIO PARTIE-ENTIER"
 :Pause
 :ClrHome
-:Disp "ENTER RATIO k/n"
+:Disp "ENTRER RATIO k/n"
 :Prompt A,D
-:Disp "A = numerator (part)"
-:Disp "D = denominator (whole)"
+:Disp "A = numérateur (partie)"
+:Disp "D = dénominateur (entier)"
 :Pause
 :Prompt X,Y,H,K
 :ClrHome
@@ -215,47 +218,136 @@
 :(X+A*(H-X)/D)→M
 :(Y+A*(K-Y)/D)→P
 :ClrHome
-:Disp "X-COORDINATE:"
+:Disp "COORDONNÉE X:"
 :Disp "X = X1 + k/n*(X2"
 :Disp "    - X1)"
 :Pause
 :ClrHome
-:Disp "NUMERATOR: k*(X2"
+:Disp "NUMÉRATEUR: k*(X2"
 :Disp "- X1) = "
 :Disp A*(H-X)
 :Pause
 :ClrHome
-:Disp "DIVIDED BY n = "
+:Disp "DIVISÉ PAR n = "
 :Disp A*(H-X)/D
 :Pause
 :ClrHome
-:Disp "X1 + RESULT = "
+:Disp "X1 + RÉSULTAT = "
 :Disp M
 :Pause
 :ClrHome
-:Disp "Y-COORDINATE:"
+:Disp "COORDONNÉE Y:"
 :Disp "Y = Y1 + k/n*(Y2"
 :Disp "    - Y1)"
 :Pause
 :ClrHome
-:Disp "NUMERATOR: k*(Y2"
+:Disp "NUMÉRATEUR: k*(Y2"
 :Disp "- Y1) = "
 :Disp A*(K-Y)
 :Pause
 :ClrHome
-:Disp "DIVIDED BY n = "
+:Disp "DIVISÉ PAR n = "
 :Disp A*(K-Y)/D
 :Pause
 :ClrHome
-:Disp "Y1 + RESULT = "
+:Disp "Y1 + RÉSULTAT = "
 :Disp P
 :Pause
 :ClrHome
-:Disp "DIVISION POINT P:"
+:Disp "POINT DIVISION P:"
 :Disp "("
 :Disp M
 :Disp ","
 :Disp P
+:Disp ")"
+:Pause
+:Return
+
+:Lbl INTRSECT
+:ClrHome
+:Disp "POINT INTERSECTION"
+:Pause
+:Disp "DEUX LIGNES:"
+:Disp "y = m1*x + b1"
+:Disp "y = m2*x + b2"
+:Pause
+:ClrHome
+:Disp "LIGNE 1:"
+:Disp "Deux points"
+:Prompt X1,Y1,X2,Y2
+:ClrHome
+:Disp "POINT 1:("
+:Disp X1
+:Disp ","
+:Disp Y1
+:Disp ") POINT 2:("
+:Disp X2
+:Disp ","
+:Disp Y2
+:Pause
+:If X2-X1=0
+:Then
+:ClrHome
+:Disp "LIGNE 1 VERTICALE"
+:Disp "X = "
+:Disp X1→M1
+:Pause
+:Goto VERT1
+:End
+:(Y2-Y1)/(X2-X1)→M1
+:Y1-M1*X1→B1
+:ClrHome
+:Disp "LIGNE 1:"
+:Disp "m1 = "
+:Disp M1
+:Disp " b1 = "
+:Disp B1
+:Pause
+:Lbl VERT1
+:ClrHome
+:Disp "LIGNE 2:"
+:Disp "Deux points"
+:Prompt X3,Y3,X4,Y4
+:ClrHome
+:Disp "POINT 3:("
+:Disp X3
+:Disp ","
+:Disp Y3
+:Disp ") POINT 4:("
+:Disp X4
+:Disp ","
+:Disp Y4
+:Pause
+:If X4-X3=0
+:Then
+:ClrHome
+:Disp "LIGNE 2 VERTICALE"
+:Disp "X = "
+:Disp X3→M2
+:Pause
+:Goto VERT2
+:End
+:(Y4-Y3)/(X4-X3)→M2
+:Y3-M2*X3→B2
+:ClrHome
+:Disp "LIGNE 2:"
+:Disp "m2 = "
+:Disp M2
+:Disp " b2 = "
+:Disp B2
+:Pause
+:Lbl VERT2
+:ClrHome
+:Disp "RÉSOLUTION:"
+:Pause
+:(B2-B1)/(M1-M2)→XI
+:M1*XI+B1→YI
+:ClrHome
+:Disp "POINT INTERSECTION:"
+:Disp "("
+:Disp XI
+:Disp ","
+:Disp YI
 :Disp ")"
 :Pause
 :Return
