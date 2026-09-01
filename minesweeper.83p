@@ -20,28 +20,42 @@
 :End
 :8→X
 :4→Y
+:0→PX
+:0→PY
 :1→G
 :While G=1
+:If PX≠0
+:Then
+:If [B](PY,PX)=0
+:Output(PY,PX,"■")
+:If [B](PY,PX)=2
+:Output(PY,PX,"P")
+:If [B](PY,PX)=1 and [A](PY,PX)=0
+:Output(PY,PX,".")
+:If [B](PY,PX)=1 and [A](PY,PX)>0
+:Output(PY,PX,[A](PY,PX))
+:End
+:End
 :Output(Y,X,"O")
 :0→K
 :While K=0
 :getKey→K
 :End
-:If [B](Y,X)=0
-:Output(Y,X,"■")
-:If [B](Y,X)=2
-:Output(Y,X,"P")
-:If [B](Y,X)=1 and [A](Y,X)=0
-:Output(Y,X,".")
-:If [B](Y,X)=1 and [A](Y,X)>0
-:Output(Y,X,[A](Y,X))
 :If K=24 and X>1
+:X→PX
+:Y→PY
 :X-1→X
 :If K=26 and X<15
+:X→PX
+:Y→PY
 :X+1→X
 :If K=25 and Y>1
+:X→PX
+:Y→PY
 :Y-1→Y
 :If K=34 and Y<7
+:X→PX
+:Y→PY
 :Y+1→Y
 :If K=93 and [B](Y,X)≠1
 :Then
@@ -53,19 +67,24 @@
 :0→[B](Y,X)
 :Output(Y,X,"■")
 :End
+:Output(Y,X,"O")
 :End
 :If K=105 and [B](Y,X)≠2
 :Then
 :If [A](Y,X)=9
 :Then
+:For(I,1,7)
+:For(J,1,15)
+:If [A](I,J)=9
+:Output(I,J,"X")
+:End
+:End
 :0→G
 :Disp "BOOM ! PERDU."
 :End
 :If [B](Y,X)≠1
 :Then
 :1→[B](Y,X)
-:If [A](Y,X)=0
-:Then
 :0→V
 :For(I,max(1,Y-1),min(7,Y+1))
 :For(J,max(1,X-1),min(15,X+1))
@@ -74,26 +93,64 @@
 :End
 :End
 :V→[A](Y,X)
-:End
 :If [A](Y,X)=0
 :Then
 :Output(Y,X,".")
-:For(I,max(1,Y-1),min(7,Y+1))
-:For(J,max(1,X-1),min(15,X+1))
-:If [B](I,J)=0 and [A](I,J)≠9
-:1→[B](I,J)
-:If [A](I,J)=0
-:Output(I,J,".")
 :Else
-:Output(I,J,[A](I,J))
-:End
-:End
-:End
-:If [A](Y,X)>0
-:Then
 :Output(Y,X,[A](Y,X))
 :End
+:If [A](Y,X)=0
+:Then
+:Repeat
+:0→Z
+:For(I,1,7)
+:For(J,1,15)
+:If [B](I,J)=1 and [A](I,J)=0
+:For(K,max(1,I-1),min(7,I+1))
+:For(L,max(1,J-1),min(15,J+1))
+:If [B](K,L)=0 and [A](K,L)≠9
+:1→[B](K,L)
+:0→V
+:For(R,max(1,K-1),min(7,K+1))
+:For(S,max(1,L-1),min(15,L+1))
+:If [A](R,S)=9
+:V+1→V
+:End
+:End
+:V→[A](K,L)
+:If [A](K,L)=0
+:Output(K,L,".")
+:Else
+:Output(K,L,[A](K,L))
+:End
+:Z+1→Z
+:End
+:End
+:End
+:End
+:End
+:If Z=0
+:Then
+:End
+:Until Z=0
+:End
+:End
+:0→S
+:For(I,1,7)
+:For(J,1,15)
+:If [B](I,J)=1 and [A](I,J)≠9
+:S+1→S
+:End
+:End
+:If S=90
+:Then
+:0→G
+:Disp "GAGNE !"
+:End
+:End
+:Output(Y,X,"O")
 :End
 :If K=45
 :0→G
+:End
 :End
