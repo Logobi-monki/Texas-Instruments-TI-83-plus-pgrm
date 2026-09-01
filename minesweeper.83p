@@ -20,20 +20,20 @@
 :End
 :8→X
 :4→Y
-:0→PX
-:0→PY
+:0→T
+:0→Q
 :1→G
 :While G=1
-:If PX≠0
+:If T≠0
 :Then
-:If [B](PY,PX)=0
-:Output(PY,PX,"■")
-:If [B](PY,PX)=2
-:Output(PY,PX,"P")
-:If [B](PY,PX)=1 and [A](PY,PX)=0
-:Output(PY,PX,".")
-:If [B](PY,PX)=1 and [A](PY,PX)>0
-:Output(PY,PX,[A](PY,PX))
+:If [B](Q,T)=0
+:Output(Q,T,"■")
+:If [B](Q,T)=2
+:Output(Q,T,"P")
+:If [B](Q,T)=1 and [A](Q,T)=0
+:Output(Q,T,".")
+:If [B](Q,T)=1 and [A](Q,T)>0
+:Output(Q,T,[A](Q,T))
 :End
 :End
 :Output(Y,X,"O")
@@ -42,20 +42,20 @@
 :getKey→K
 :End
 :If K=24 and X>1
-:X→PX
-:Y→PY
+:X→T
+:Y→Q
 :X-1→X
 :If K=26 and X<15
-:X→PX
-:Y→PY
+:X→T
+:Y→Q
 :X+1→X
 :If K=25 and Y>1
-:X→PX
-:Y→PY
+:X→T
+:Y→Q
 :Y-1→Y
 :If K=34 and Y<7
-:X→PX
-:Y→PY
+:X→T
+:Y→Q
 :Y+1→Y
 :If K=93 and [B](Y,X)≠1
 :Then
