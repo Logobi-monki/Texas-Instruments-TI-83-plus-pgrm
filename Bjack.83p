@@ -1,0 +1,53 @@
+Lbl 0
+ClrHome
+randInt(2,11)+randInt(2,11)->P
+randInt(2,11)+randInt(2,11)->D
+
+Lbl 1
+ClrHome
+Disp "TOTAL:",P
+If P>21:Goto 3
+Pause
+Menu("ACTION...","HIT",2,"STAND",3)
+
+Lbl 2
+P+randInt(2,11)->P
+Goto 1
+
+Lbl 3
+ClrHome
+Disp "TOTAL:",P
+Disp "TOUR DEALER..."
+Pause 
+
+Lbl 5
+If D<17
+Then
+D+randInt(2,11)->D
+Goto 5
+End
+
+ClrHome
+Disp "TOTAL:",P
+Disp "DEALER TOTAL:",D
+If P>21:Goto 4
+If D>21:Goto 6
+If P>D:Goto 6
+If P<D:Goto 4
+Disp "EGALITE!"
+Goto 7
+
+Lbl 4
+Disp "TA PERDU!"
+Goto 7
+
+Lbl 6
+Disp "TU GAGNE!... dommage"
+
+Lbl 7
+Pause 
+ClrHome
+Menu("ENCORE?","O",0,"N",8)
+
+Lbl 8
+ClrHome
