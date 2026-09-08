@@ -1,0 +1,12 @@
+:a+bi
+:Prompt A,H,K
+:H+√(-K/A)→X
+:H-√(-K/A)→Y
+:Disp "SOMMET:"
+:Disp "X=",H
+:Disp "Y=",K
+:Disp "ENTER POUR CONTINUER"
+:Pause
+:Disp "RACINES:"
+:Disp "X1=",X
+:Disp "X2=",Y
