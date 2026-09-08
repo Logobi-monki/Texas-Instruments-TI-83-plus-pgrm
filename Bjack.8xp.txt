@@ -27,7 +27,7 @@ D+randInt(2,11)->D
 Goto 5
 End
 
-ClrHome
+
 Disp "TOTAL:",P
 Disp "DEALER TOTAL:",D
 If P>21:Goto 4
@@ -42,7 +42,7 @@ Disp "TA PERDU!"
 Goto 7
 
 Lbl 6
-Disp "TA GAGNE!... dommage"
+Disp "TA GAGNE!","... dommage"
 
 Lbl 7
 Pause 
