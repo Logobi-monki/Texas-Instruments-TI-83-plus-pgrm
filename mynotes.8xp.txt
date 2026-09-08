@@ -1,17 +1,17 @@
 :ClrHome
-:Menu("CHOOSE A TOPIC","ALGEBRA",1,"SLOPE",2,"GEOMETRY",3,"EXIT",4)
+:Menu("CHOOSI","ALGEBRE",1,"DIAGRAMME",2,"GEO",3,"EXIT",4)
 :
 :Lbl 1
 :ClrHome
-:Output(1,1,"ALGEBRA NOTES:")
-:Output(3,1,"YOUR NOTE HERE")
-:Output(4,1,"ANOTHER LINE")
+:Output(1,1,"ALGEBRE NOTES:")
+:Output(3,1,"NOTE HERE")
+:Output(4,1,"NOTE NOTE")
 :Pause 
 :Goto 5
 :
 :Lbl 2
 :ClrHome
-:Output(1,1,"SLOPE NOTES:")
+:Output(1,1,"DIAGRAMME NOTE:")
 :Output(3,1,"A=(Y2-Y1)/(X2-X1)")
 :Output(4,1,"BLA BLA...")
 :Pause 
@@ -19,17 +19,17 @@
 :
 :Lbl 3
 :ClrHome
-:Output(1,1,"GEOMETRY NOTES:")
+:Output(1,1,"GEOMETRIE NOTES:")
 :Output(3,1,"A=PI*R^2")
 :Pause 
 :Goto 5
 :
 :Lbl 4
 :ClrHome
-:Output(1,1,"GOODBYE")
+:Output(1,1,"BYE BYE WSH")
 :Output(2,1,"ENTER+ON+1 TO LEAVE")
 :Stop
 :
 :Lbl 5
 :ClrHome
-:Menu("RUN AGAIN?","Y",1,"N",4)
+:Menu("ENCORE?","OUI",1,"NON",4)
