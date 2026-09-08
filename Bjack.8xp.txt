@@ -42,7 +42,7 @@ Disp "TA PERDU!"
 Goto 7
 
 Lbl 6
-Disp "TU GAGNE!... dommage"
+Disp "TA GAGNE!... dommage"
 
 Lbl 7
 Pause 
