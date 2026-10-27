@@ -3,10 +3,10 @@ ClrHome
 Menu("PARTIE ENTIERE","TROUVER PARAMS",1,"RESOUDRE",2,"ANALYSE",6,"FORMULES",3,"CONSEILS",4,"QUITTER",5)
 Lbl 1
 ClrHome
-Disp "LONGUEUR PALIER:"
+Disp "LONGUEUR (1/|B|):"
 Input "L=",L
-Disp "HAUTEUR PALIER:"
-Input "H=",H
+Disp "HAUTEUR (|A|):"
+Input "V=",V
 Menu("ORIENTATION DU POINT","PLEIN-VIDE (B>0)",11,"VIDE-PLEIN (B<0)",12)
 Lbl 11
 1/L→B
@@ -16,10 +16,10 @@ Lbl 12
 Lbl 13
 Menu("ESCALIER","MONTE (A>0)",14,"DESCEND (A<0)",15)
 Lbl 14
-H→A
+V→A
 Goto 16
 Lbl 15
--H→A
+-V→A
 Lbl 16
 ClrHome
 Disp "ENTREZ UN POINT PLEIN"
@@ -48,6 +48,11 @@ Lbl 21
 Input "X=",X
 A*int(B*(X-M))+K→Y
 ClrHome
+Disp "ETAPES DE CALCUL:"
+Disp "A*int(B(X-H))+K"
+Disp A," * int("
+Disp B," * (",X," - ",M,"))"
+Disp " + ",K
 Disp "RESULTAT:"
 Disp "f(X)=",Y
 Pause 
@@ -65,6 +70,10 @@ Else
 N/B+M→F
 (N+1)/B+M→O
 ClrHome
+Disp "ETAPES DE CALCUL:"
+Disp "(Y-K)/A = N"
+Disp "(",Y,"-",K,") /",A
+Disp "N =",N
 Disp "INTERVALLE DE X:"
 If B>0
 Then
@@ -86,6 +95,11 @@ Menu("ANALYSE","ORDONNEE ORIGINE",61,"ZEROS (X)",62,"VARIATION",63)
 Lbl 61
 A*int(B*(0-M))+K→Y
 ClrHome
+Disp "ETAPES DE CALCUL:"
+Disp "A*int(B(0-H))+K"
+Disp A," * int("
+Disp B," * (0 - ",M,"))"
+Disp " + ",K
 Disp "ORDONNEE A L'ORIGINE:"
 Disp "f(0)=",Y
 Pause 
@@ -102,8 +116,10 @@ Else
 N/B+M→F
 (N+1)/B+M→O
 ClrHome
-Disp "LES ZEROS DE f(X) SONT"
-Disp "DANS L'INTERVALLE:"
+Disp "ETAPES (0-K)/A=N :"
+Disp "(0 - ",K,") / ",A
+Disp "N =",N
+Disp "LES ZEROS SONT DANS:"
 If B>0
 Then
 Disp "[",F,";",O,"["
