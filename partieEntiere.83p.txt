@@ -3,10 +3,28 @@ ClrHome
 Menu("PARTIE ENTIERE","TROUVER PARAMS",1,"RESOUDRE",2,"ANALYSE",6,"FORMULES",3,"CONSEILS",4,"QUITTER",5)
 Lbl 1
 ClrHome
+Disp "F(X)=A*int(B*(X-H))+K"
+Disp "A=±V, B=±1/L"
 Disp "LONGUEUR DU PALIER:"
 Input "L=",L
+If L≤0
+Then
+ClrHome
+Disp "ERREUR"
+Disp "L doit etre >0"
+Pause 
+Goto 0
+End
 Disp "HAUTEUR DU PALIER:"
 Input "V=",V
+If V=0
+Then
+ClrHome
+Disp "ERREUR"
+Disp "V ne peut pas valoir 0"
+Pause 
+Goto 0
+End
 Menu("ORIENTATION","PLN-VIDE B>0",11,"VIDE-PLN B<0",12)
 Lbl 11
 1/L→B
@@ -45,6 +63,22 @@ Input "A=",A
 Input "B=",B
 Input "H=",M
 Input "K=",K
+If A=0
+Then
+ClrHome
+Disp "ERREUR"
+Disp "A=0: division impossible"
+Pause 
+Goto 0
+End
+If B=0
+Then
+ClrHome
+Disp "ERREUR"
+Disp "B=0: division impossible"
+Pause 
+Goto 0
+End
 Menu("RESOUDRE","TROUVER f(X)",21,"TROUVER X(Y)",22)
 Lbl 21
 Input "X=",X
@@ -88,6 +122,22 @@ Input "A=",A
 Input "B=",B
 Input "H=",M
 Input "K=",K
+If A=0
+Then
+ClrHome
+Disp "ERREUR"
+Disp "A=0: division impossible"
+Pause 
+Goto 0
+End
+If B=0
+Then
+ClrHome
+Disp "ERREUR"
+Disp "B=0: division impossible"
+Pause 
+Goto 0
+End
 Menu("ANALYSE","ORD. ORIGINE",61,"ZEROS (X)",62,"VARIATION",63)
 Lbl 61
 A*int(B*(0-M))+K→Y
