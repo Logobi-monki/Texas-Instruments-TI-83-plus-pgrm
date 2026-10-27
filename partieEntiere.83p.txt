@@ -1,0 +1,159 @@
+Lbl 0
+ClrHome
+Menu("PARTIE ENTIERE","TROUVER PARAMS",1,"RESOUDRE",2,"ANALYSE",6,"FORMULES",3,"CONSEILS",4,"QUITTER",5)
+Lbl 1
+ClrHome
+Disp "LONGUEUR PALIER:"
+Input "L=",L
+Disp "HAUTEUR PALIER:"
+Input "H=",H
+Menu("ORIENTATION DU POINT","PLEIN-VIDE (B>0)",11,"VIDE-PLEIN (B<0)",12)
+Lbl 11
+1/L→B
+Goto 13
+Lbl 12
+-1/L→B
+Lbl 13
+Menu("ESCALIER","MONTE (A>0)",14,"DESCEND (A<0)",15)
+Lbl 14
+H→A
+Goto 16
+Lbl 15
+-H→A
+Lbl 16
+ClrHome
+Disp "ENTREZ UN POINT PLEIN"
+Disp "CONNU (X,Y):"
+Input "X=",X
+Input "Y=",Y
+X→M
+Y→K
+ClrHome
+Disp "PARAMETRES TROUVES:"
+Disp "A=",A
+Disp "B=",B
+Disp "H=",M
+Disp "K=",K
+Pause 
+Goto 0
+Lbl 2
+ClrHome
+Disp "ENTREZ LES PARAMETRES:"
+Input "A=",A
+Input "B=",B
+Input "H=",M
+Input "K=",K
+Menu("RESOUDRE","TROUVER f(X)",21,"TROUVER X (Y)",22)
+Lbl 21
+Input "X=",X
+A*int(B*(X-M))+K→Y
+ClrHome
+Disp "RESULTAT:"
+Disp "f(X)=",Y
+Pause 
+Goto 0
+Lbl 22
+Input "Y=",Y
+(Y-K)/A→N
+If fPart(N)≠0
+Then
+ClrHome
+Disp "AUCUNE SOLUTION"
+Disp "(Y-K)/A N'EST PAS"
+Disp "UN NOMBRE ENTIER."
+Else
+N/B+M→F
+(N+1)/B+M→O
+ClrHome
+Disp "INTERVALLE DE X:"
+If B>0
+Then
+Disp "[",F,";",O,"["
+Else
+Disp "]",O,";",F,"]"
+End
+End
+Pause 
+Goto 0
+Lbl 6
+ClrHome
+Disp "ENTREZ LES PARAMETRES:"
+Input "A=",A
+Input "B=",B
+Input "H=",M
+Input "K=",K
+Menu("ANALYSE","ORDONNEE ORIGINE",61,"ZEROS (X)",62,"VARIATION",63)
+Lbl 61
+A*int(B*(0-M))+K→Y
+ClrHome
+Disp "ORDONNEE A L'ORIGINE:"
+Disp "f(0)=",Y
+Pause 
+Goto 0
+Lbl 62
+(0-K)/A→N
+If fPart(N)≠0
+Then
+ClrHome
+Disp "AUCUN ZERO"
+Disp "L'ESCALIER NE TOUCHE"
+Disp "PAS L'AXE DES X."
+Else
+N/B+M→F
+(N+1)/B+M→O
+ClrHome
+Disp "LES ZEROS DE f(X) SONT"
+Disp "DANS L'INTERVALLE:"
+If B>0
+Then
+Disp "[",F,";",O,"["
+Else
+Disp "]",O,";",F,"]"
+End
+End
+Pause 
+Goto 0
+Lbl 63
+ClrHome
+If A*B>0
+Then
+Disp "FONCTION CROISSANTE"
+Disp "CAR A ET B MEME SIGNE."
+Else
+Disp "FONCTION DECROISSANTE"
+Disp "CAR A ET B SIGNE OPP."
+End
+Disp "CODOMAINE DE LA FCT:"
+Disp "Y = A * N + K"
+Disp "OU N e Z"
+Pause 
+Goto 0
+Lbl 3
+ClrHome
+Disp "LONGUEUR = 1/|B|"
+Disp "HAUTEUR = |A|"
+Disp "DOMAINE = R"
+Disp "CODOM = {Y|(Y-K)/A e Z}"
+Disp "SI A ET B MEME SIGNE:"
+Disp "-> CROISSANTE"
+Disp "SI SIGNES OPPOSES:"
+Disp "-> DECROISSANTE"
+Pause 
+Goto 0
+Lbl 4
+ClrHome
+Disp "1. REPERER LE PT PLEIN"
+Disp "POUR FIXER (H,K)."
+Disp "2. SI B < 0, L'ORDRE"
+Disp "DES CROCHETS S'INVERSE"
+Disp "DANS L'INTERVALLE:"
+Disp "D'ABORD OUVERT ET"
+Disp "FINIT PAR FERME."
+Disp "3. INT(X) ARRONDIT"
+Disp "TOUJOURS VERS LE BAS."
+Pause 
+Goto 0
+Lbl 5
+ClrHome
+Disp "FIN DU PROGRAMME."
+Stop
